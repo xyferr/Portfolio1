@@ -1,6 +1,6 @@
 <div align="center">
 
-# vCard - Personal portfolio
+# My portfolio
 
-vCard is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript.
+This is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript.
 

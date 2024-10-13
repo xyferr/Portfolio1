@@ -1135,25 +1135,71 @@
         <section class="contact-form">
 
           <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
+        
+          <form id="contactForm" class="form">
+        
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Full name" required>
+        
+              <input type="email" id="email" name="email" class="form-input" placeholder="Email address" required>
             </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
+        
+            <textarea id="message" name="message" class="form-input" placeholder="Your Message" required></textarea>
+        
+            <button class="form-btn" type="submit">
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
+        
           </form>
-
+        
+          <div id="responseMessage"></div>
+        
         </section>
+        
+        <script>
+          document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevents form submission and page reload
+        
+            // Get form data
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+        
+            // Create the data object to be sent in the POST request
+            const data = {
+              name: fullname,
+              email: email,
+              message: message
+            };
+        
+            try {
+              // Make a POST request to your backend API
+              const response = await fetch('http://127.0.0.1:8000/api/message/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              });
+        
+              // Parse the JSON response
+              const result = await response.json();
+        
+              // Display a success message or handle errors
+              if (response.ok) {
+                document.getElementById('responseMessage').textContent = 'Message sent successfully!';
+              } else {
+                document.getElementById('responseMessage').textContent = 'Failed to send message. Please try again.';
+              }
+        
+            } catch (error) {
+              console.error('Error:', error);
+              document.getElementById('responseMessage').textContent = 'An error occurred. Please try again.';
+            }
+          });
+        </script>
+        
 
       </article>
 
