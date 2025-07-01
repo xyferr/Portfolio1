@@ -37,7 +37,7 @@ const About = () => {
                                                 clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
                                             }}>
                                             <img
-                                                src="/images/profile.png"
+                                                src="./images/profile.png"
                                                 alt="Vidita Singh"
                                                 className="w-full h-full object-cover"
                                             />
